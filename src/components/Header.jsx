@@ -20,26 +20,21 @@ const Header = () => {
     const user = true
     const wishlist_count = 3
     const cart_count = 5
+
     const categories = [
         'Mobiles',
         'Laptops',
-        'Headphones',
-        'Accessories',
-        'Gaming',
-        'TV & Home Theater',
-        'Camera & Photo',
-        'Smart Watches',
-        'Smart Home',
-        'Smart Watches',
-        'Smart Home',
-        'Smart Watches',
-        'Smart Home',
-        'Smart Watches',
-        'Smart Home'
+        'Speakers',
+        'Top Wear',
+        'Footwear',
+        'Watches',
+        'Home Decor',
+        'Smart Watches'
     ]
 
     return (
         <div className='w-full bg-white'>
+
             <div className='header-top bg-[#caddff] md-lg:hidden'>
                 <div className='w-[85%] lg:w-[90%] mx-auto'>
                     <div className='flex w-full justify-between items-center h-[50px] text-gray-500'>
@@ -296,14 +291,10 @@ const Header = () => {
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
-
             </div>
-
 
         </div>
     );
