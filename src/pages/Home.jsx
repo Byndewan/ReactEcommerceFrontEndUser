@@ -4,6 +4,7 @@ import Banner from '../components/Banner';
 import Categories from '../components/Categories';
 import FeatureProducts from '../components/products/FeatureProducts';
 import Products from '../components/products/Products';
+import Footer from '../components/Footer';
 
 const Home = () => {
     return (
@@ -23,7 +24,7 @@ const Home = () => {
                             <Products title='Latest Products' />
                         </div>
 
-                        <div className='overflow-hidden'>
+                        <div className='overflow-\hidden'>
                             <Products title='Top Rate Products' />
                         </div>
                         
@@ -34,6 +35,8 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+
+            <Footer />
 
         </div>
     );
