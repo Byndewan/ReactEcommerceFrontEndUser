@@ -3,6 +3,14 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import { IoIosArrowForward } from 'react-icons/io';
+import { Range } from 'react-range';
+import { AiFillStar } from 'react-icons/ai';
+import { CiStar } from 'react-icons/ci';
+import { BsFillGridFill } from 'react-icons/bs';
+import { FaThList } from 'react-icons/fa';
+import Products from './../components/products/Products';
+import ShopProducts from '../components/products/ShopProducts';
+import Pagination from '../components/Pagination';
 
 const Shops = () => {
 
@@ -17,6 +25,12 @@ const Shops = () => {
         'Home Decor',
         'Smart Watches'
     ]
+
+    const [state, setState] = useState({values: [50, 1500]})
+    const [ratingss, setRating] = useState('')
+    const [styles, setStyles] = useState('grid')
+    const [parPage, setParPage] = useState(1);
+    const [pageNumber, setPageNumber] = useState(1)
 
     return (
         <div>
@@ -58,7 +72,120 @@ categories.map((c,i) =>
 )
 }
 </div>
+
+<div className='py-2 flex flex-col gap-5'>
+<h2 className='text-3xl font-bold mb-3 text-gray-600'>Price</h2>
+
+<Range 
+step={5}
+min={50}
+max={1500}
+values={(state.values)}
+onChange={(values) => setState({values})}
+renderTrack={({props,children}) => (
+<div {...props} className='w-full h-[6px] bg-gray-200 rounded-full cursor-pointer'>
+{children}
 </div>
+)}
+renderThumb={({ props }) => (
+<div className='w-[15px] h-[15px] bg-[#059473] rounded-full' {...props} />
+)}
+/>
+<div>
+<span className='text-gray-800 font-bold text-lg'>${Math.floor(state.values[0])} - ${Math.floor(state.values[1])}</span>
+</div>
+</div>
+
+<div className='py-3 flex flex-col gap-4 mb-10'>
+<h2 className='text-3xl font-bold mb-3 text-gray-600'>Rating</h2>
+<div className='flex flex-col gap-3'>
+<div onClick={() => setRating(5)} className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
+<span><AiFillStar/></span>
+<span><AiFillStar/></span>
+<span><AiFillStar/></span>
+<span><AiFillStar/></span>
+<span><AiFillStar/></span>
+</div>
+<div onClick={() => setRating(4)} className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
+<span><AiFillStar/></span>
+<span><AiFillStar/></span>
+<span><AiFillStar/></span>
+<span><AiFillStar/></span>
+<span><CiStar/></span>
+</div>
+<div onClick={() => setRating(3)} className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
+<span><AiFillStar/></span>
+<span><AiFillStar/></span>
+<span><AiFillStar/></span>
+<span><CiStar/></span>
+<span><CiStar/></span>
+</div>
+<div onClick={() => setRating(2)} className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
+<span><AiFillStar/></span>
+<span><AiFillStar/></span>
+<span><CiStar/></span>
+<span><CiStar/></span>
+<span><CiStar/></span>
+</div>
+<div onClick={() => setRating(1)} className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
+<span><AiFillStar/></span>
+<span><CiStar/></span>
+<span><CiStar/></span>
+<span><CiStar/></span>
+<span><CiStar/></span>
+</div>
+<div onClick={() => setRating(0)} className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
+<span><CiStar/></span>
+<span><CiStar/></span>
+<span><CiStar/></span>
+<span><CiStar/></span>
+<span><CiStar/></span>
+</div>
+</div>
+</div>
+
+
+<div className='py-5 flex flex-col gap-4 md:hidden'>
+<Products title='Latest Products' />
+</div>
+</div>
+
+
+<div className='w-9/12 md-lg:w-8/12 md:w-full'>
+<div className='pl-8 md:pl-0'>
+<div className='py-4 bg-white mb-10 px-3 rounded-md flex justify-between items-start border'>
+<h2 className='text-lg font-medium text-gray-600'>14 Products</h2>
+<div className='flex justify-center items-center gap-3'>
+<select className='p-1 border outline-0 text-gray-600 font-semibold rounded-lg' name="" id="">
+<option value="">Sort By</option>
+<option value="low-to-high">Low to High Price</option>
+<option value="high-to-low">High to Low Price</option>
+</select>
+<div className='flex justify-center items-start gap-4 md-lg:hidden'>
+<div onClick={() => setStyles('grid')} className={`p-2 ${styles === 'grid' && 'bg-gray-300'} text-gray-500 hover:bg-gray-300 cursor-pointer rounded-lg`}>
+<BsFillGridFill />
+</div>
+<div onClick={() => setStyles('list')} className={`p-2 ${styles === 'list' && 'bg-gray-300'} text-gray-500 hover:bg-gray-300 cursor-pointer rounded-lg`}>
+<FaThList />
+</div>
+</div>
+</div>
+</div>
+
+
+<div className='pb-8'>
+<ShopProducts styles={styles} />
+</div>
+
+<div>
+<Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} totalItem={10} parPage={parPage} showItem={Math.floor(10 / 3 )}/>
+</div>
+
+
+</div>
+</div>
+
+
 </div>
 </div>
 </section>

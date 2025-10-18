@@ -42,11 +42,10 @@ const FeatureProducts = () => {
                                 <h2 className='font-bold'>Product Name</h2>
                                 <div className='flex justify-start items-center gap-3'>
                                     <span className='text-md font-semibold '>$1200</span>
-                                    
+                                
                                     <div className='flex'>
                                         <Rating ratings={4.5} />
                                     </div>
-
                                 </div>
                             </div>
 
