@@ -1,13 +1,24 @@
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IoIosArrowForward } from 'react-icons/io';
 
 const Card = () => {
 
+const navigate = useNavigate()
 const card_products = [1,2]
 const outOfStockProduct = [1]
+const redirect = () => {
+navigate('/shipping', {
+state:{
+products: [],
+price: 999,
+shipping_fee: -898,
+items: 2
+}
+})
+}
 
 return (
 <div>
@@ -143,7 +154,7 @@ card_products.length > 0 &&
 <span>Total</span>
 <span className='text-lg text-[#059473]'>$-01999</span>
 </div>
-<button className='px-5 py-[6px] rounded-sm hover:shadow-red-500/50 hover:shadow-lg bg-red-500 text-sm text-white uppercase font-bold'>Process to Checkout</button>
+<button onClick={redirect} className='px-5 py-[6px] rounded-sm hover:shadow-red-500/50 hover:shadow-lg bg-red-500 text-sm text-white uppercase font-bold'>Process to Checkout</button>
 </div>
 }
 </div>
@@ -158,7 +169,7 @@ card_products.length > 0 &&
 </div>
 </section>
 
-{/* <Footer /> */}
+<Footer />
 </div>
 );
 };
